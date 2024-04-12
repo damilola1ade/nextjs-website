@@ -1,0 +1,48 @@
+{
+  "name": "website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "fast": "next dev --turbo",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fontsource-variable/dm-sans": "^5.0.5",
+    "@splidejs/react-splide": "^0.7.12",
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+    "@strapi/blocks-react-renderer": "^1.0.1",
+    "framer-motion": "^11.0.25",
+    "lottie-react": "^2.4.0",
+    "moment": "^2.30.1",
+    "next": "14.1.4",
+    "nextjs-toploader": "^1.6.11",
+    "react": "^18",
+    "react-cookie-consent": "^9.0.0",
+    "react-dom": "^18",
+    "react-hook-form": "^7.51.2",
+    "react-icons": "^5.0.1",
+    "react-intersection-observer": "^9.8.2",
+    "react-share": "^5.1.0",
+    "sharp": "^0.33.3",
+    "strapi-plugin-populate-deep": "^3.0.1",
+    "swr": "^2.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
