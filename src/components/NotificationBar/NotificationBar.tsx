@@ -3,33 +3,40 @@
 import { useState, useEffect } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
+import useSWR from "swr";
+
 import { MdArrowOutward } from "react-icons/md";
 
 import Image from "next/image";
 
 import Link from "next/link";
+import { fetcher } from "@/lib/api";
 
 export const NotificationBar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
+  const { data } = useSWR(
+    `${process.env.BLOG_URL}/blogs?populate=deep`,
+    fetcher
+  );
 
-  // const blog = data?.data?.filter(
-  //   (item: { attributes: { isFeatured: boolean } }) =>
-  //     item.attributes.isFeatured
-  // );
+  const blog = data?.data?.filter(
+    (item: { attributes: { isFeatured: boolean } }) =>
+      item.attributes.isFeatured
+  );
 
-  // const featuredBlog = blog?.reduce(
-  //   (
-  //     prev: { attributes: { createdAt: string | number | Date } },
-  //     current: { attributes: { createdAt: string | number | Date } }
-  //   ) => {
-  //     if (!prev) return current;
-  //     const prevCreatedAt = new Date(prev.attributes.createdAt);
-  //     const currentCreatedAt = new Date(current.attributes.createdAt);
-  //     return prevCreatedAt > currentCreatedAt ? prev : current;
-  //   },
-  //   null
-  // );
+  const featuredBlog = blog?.reduce(
+    (
+      prev: { attributes: { createdAt: string | number | Date } },
+      current: { attributes: { createdAt: string | number | Date } }
+    ) => {
+      if (!prev) return current;
+      const prevCreatedAt = new Date(prev.attributes.createdAt);
+      const currentCreatedAt = new Date(current.attributes.createdAt);
+      return prevCreatedAt > currentCreatedAt ? prev : current;
+    },
+    null
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +76,7 @@ export const NotificationBar = () => {
           alt="banner1"
         />
       </Box>
-      {/* {featuredBlog && (
+      {featuredBlog && (
         <Flex
           as={Link}
           href={`/blog/${featuredBlog?.attributes?.slug}`}
@@ -96,7 +103,7 @@ export const NotificationBar = () => {
             <MdArrowOutward />
           </Box>
         </Flex>
-      )} */}
+      )}
 
       <Box display={{ base: "none", lg: "flex" }}>
         <Image
