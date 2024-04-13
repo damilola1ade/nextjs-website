@@ -17,7 +17,10 @@ export const NotificationBar = () => {
 
   const { data } = useSWR(
     `${process.env.BLOG_URL}/blogs?populate=deep`,
-    fetcher
+    fetcher,
+    {
+      dedupingInterval: 500000,
+    }
   );
 
   const blog = data?.data?.filter(
