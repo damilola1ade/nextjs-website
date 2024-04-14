@@ -33,24 +33,40 @@ import {
 } from "react-share";
 import { fetcher } from "@/lib/api";
 
-export async function getStaticPaths() {
-  const blogsData = await fetcher(
-    `${process.env.BLOG_URL}/blogs?populate=deep`
-  );
+// export async function getStaticPaths() {
+//   const blogsData = await fetcher(
+//     `${process.env.BLOG_URL}/blogs?populate=deep`
+//   );
 
-  const paths = blogsData.data.map((item: { attributes: { slug: string } }) => {
-    return {
-      params: { slug: item.attributes.slug },
-    };
-  });
+//   const paths = blogsData.data.map((item: { attributes: { slug: string } }) => {
+//     return {
+//       params: { slug: item.attributes.slug },
+//     };
+//   });
 
-  return {
-    paths,
-    fallback: false,
-  };
-}
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
 
-export async function getStaticProps({ params }: any) {
+// export async function getStaticProps({ params }: any) {
+//   const { slug } = params;
+
+//   const [blogsData, author] = await Promise.all([
+//     fetcher(`${process.env.BLOG_URL}/blogs/${slug}`),
+//     fetcher(`${process.env.BLOG_URL}/authors?populate=deep`),
+//   ]);
+
+//   return {
+//     props: {
+//       data: blogsData,
+//       author: author,
+//     },
+//   };
+// }
+
+export async function getServerSideProps({ params }: any) {
   const { slug } = params;
 
   const [blogsData, author] = await Promise.all([
