@@ -6,7 +6,6 @@ import { BlogComponent } from ".";
 import moment from "moment";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 interface Props {

@@ -1,4 +1,12 @@
-import { Avatar, Box, Button, Image, Flex, Stack, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Image,
+  Flex,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { IoArrowForward } from "react-icons/io5";
 
 import defaultBlogImage from "../../../../public/defaultBlogImage.png";
@@ -32,7 +40,6 @@ const BlogComponent: React.FC<Props> = ({
     <Box mt={{ base: 4, lg: 12 }} pos="relative" w="100%" as={Link} href={to}>
       <Flex
         justifyContent="space-around"
-        alignItems="center"
         flexDirection={{ base: "column", lg: "row" }}
         gap={6}
       >
@@ -51,8 +58,8 @@ const BlogComponent: React.FC<Props> = ({
 
           <Flex justifyContent="space-between">
             <Text
-              maxW={{ base: "full", lg: "420px" }}
-              fontSize={{ base: "lg", lg: "4xl" }}
+              maxW={{ base: "full", lg: "480px" }}
+              fontSize={{ base: "lg", lg: "5xl" }}
               fontWeight="bold"
               letterSpacing={-1}
             >
@@ -100,8 +107,12 @@ const BlogComponent: React.FC<Props> = ({
           </Flex>
 
           <Flex alignItems="center" justifyContent="center">
-            <Box w={{ base: "200px", lg: "360px" }} >
-              <Image src={image || `/defaultBlogImage.png`} borderRadius="2xl" alt={alt} />
+            <Box w={{ base: "200px", lg: "360px" }}>
+              <Image
+                src={image || `/defaultBlogImage.png`}
+                borderRadius="2xl"
+                alt={alt}
+              />
             </Box>
           </Flex>
         </Stack>
@@ -110,4 +121,4 @@ const BlogComponent: React.FC<Props> = ({
   );
 };
 
-export default BlogComponent
+export default BlogComponent;

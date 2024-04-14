@@ -14,6 +14,20 @@ import moment from "moment";
 import { fetcher } from "@/lib/api";
 import useSWR from "swr";
 
+export async function getStaticProps() {
+  const pageIndex = 1;
+
+  const blogsData = await fetcher(
+    `${process.env.BLOG_URL}/blogs?populate=deep&sort=createdAt:desc&pagination[page]=${pageIndex}&pagination[pageSize]=10&filters[category][category][$containsi]=company`
+  );
+
+  return {
+    props: {
+      blogsData,
+    },
+  };
+}
+
 const CompanyCategory = ({ blogsData }: { blogsData: any }) => {
   const [pageIndex, setPageIndex] = useState(1);
 
@@ -22,6 +36,7 @@ const CompanyCategory = ({ blogsData }: { blogsData: any }) => {
     fetcher,
     {
       fallbackData: blogsData,
+      dedupingInterval: 500000,
     }
   );
 
@@ -158,17 +173,3 @@ const CompanyCategory = ({ blogsData }: { blogsData: any }) => {
 };
 
 export default CompanyCategory;
-
-export async function getStaticProps() {
-  const pageIndex = 1;
-
-  const blogsData = await fetcher(
-    `${process.env.BLOG_URL}/blogs?populate=deep&sort=createdAt:desc&pagination[page]=${pageIndex}&pagination[pageSize]=10&filters[category][category][$containsi]=company`
-  );
-
-  return {
-    props: {
-      blogsData,
-    },
-  };
-}

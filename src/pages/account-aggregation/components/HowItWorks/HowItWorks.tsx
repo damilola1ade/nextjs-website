@@ -12,7 +12,6 @@ import {
   Center,
   Circle,
   Flex,
-  Spacer,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -94,6 +93,7 @@ const HowItWorks = () => {
     <Box
       w={{ base: "auto", lg: "100%" }}
       bg="#f4f6f8"
+      h={{ base: "110vh", xl: "100vh" }}
       p={{ base: 4, lg: 12 }}
       borderRadius="2xl"
     >
@@ -102,7 +102,7 @@ const HowItWorks = () => {
         minW={{ base: "1024px", "2xl": "1320px" }}
         mx="auto"
         flexDir={{ base: "column", lg: "row" }}
-        justifyContent={{ base: "center", lg: "normal" }}
+        justifyContent={{ base: "center", lg: "space-evenly" }}
         alignItems={{ base: "center", lg: "normal" }}
       >
         <Box>
@@ -119,7 +119,7 @@ const HowItWorks = () => {
                 letterSpacing={-1}
                 zIndex={2}
               >
-                <TypingText title="HOW IT WORKS" />
+                HOW IT WORKS
               </Text>
               <Box
                 bg="#c2ecff"
@@ -137,7 +137,7 @@ const HowItWorks = () => {
           <Accordion
             index={currentIndex}
             minW={{ base: "400px", "2xl": "500px" }}
-            maxW={{ base: "400px", "2xl": "500px" }}
+            maxW={{ base: "400px", "2xl": "560px" }}
           >
             {accountAggregationData.map((item, index) => (
               <AccordionItem
@@ -216,20 +216,19 @@ const HowItWorks = () => {
             ))}
           </Accordion>
         </Box>
-        <Spacer />
         <Flex
-          w="50%"
+          w="40%"
           bg="#e9edf8"
           bgImage="/pattern.svg"
           bgSize="cover"
           bgBlendMode="multiply"
-          h={{ base: "300px", md: "480px", "2xl": "668px" }}
-          borderRadius="2xl"
+          h={{ base: "300px", md: "480px", "2xl": "560px" }}
+          borderRadius="3xl"
           position="relative"
           justifyContent="center"
           overflow="hidden"
         >
-          <Center mt={{ base: 32, lg: 40, "2xl": 60 }}>
+          <Center mt={{ base: 32, lg: 40, "2xl": 48 }}>
             {currentIndex === 0 && <FirstImage />}
             {currentIndex === 1 && <SecondImage />}
             {currentIndex === 2 && <ThirdImage />}

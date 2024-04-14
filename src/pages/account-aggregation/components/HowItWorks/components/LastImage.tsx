@@ -9,17 +9,19 @@ const LastImage = () => {
 
   return (
     <Image
+      mt={{ base: -32, lg: -48, "2xl": -72 }}
+      ml={{ base: 0, lg: 12, "2xl": 20 }}
       ref={imageRef}
       position="absolute"
-      src="/authenticate.png"
-      w={{ base: "150px", md: "250px", "2xl": "350px" }}
+      src='/records.png'
+      w={{ base: "350px", md: "500px", "2xl": "2xl" }}
       style={{
         transform: isImageInView ? "none" : "translateY(10px)",
         opacity: isImageInView ? 1 : 0,
         filter: isImageInView ? "blur(0)" : "blur(1px)",
         transition: "all 0.3s cubic-bezier(0.47, 0, 0.745, 0.715) 0.2s",
       }}
-      alt="consent screen"
+      alt="payment screen"
     />
   );
 };

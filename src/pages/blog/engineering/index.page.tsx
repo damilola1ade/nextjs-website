@@ -16,6 +16,20 @@ import { BlogComponent } from "../components";
 import moment from "moment";
 import { fetcher } from "@/lib/api";
 
+export async function getStaticProps() {
+  const pageIndex = 1;
+
+  const blogsData = await fetcher(
+    `${process.env.BLOG_URL}/blogs?populate=deep&sort=createdAt:desc&pagination[page]=${pageIndex}&pagination[pageSize]=10&filters[category][category][$containsi]=engineering`
+  );
+
+  return {
+    props: {
+      blogsData,
+    },
+  };
+}
+
 const EngineeringCategory = ({ blogsData }: { blogsData: any }) => {
   const [pageIndex, setPageIndex] = useState(1);
 
@@ -24,6 +38,7 @@ const EngineeringCategory = ({ blogsData }: { blogsData: any }) => {
     fetcher,
     {
       fallbackData: blogsData,
+      dedupingInterval: 500000,
     }
   );
 
@@ -160,17 +175,3 @@ const EngineeringCategory = ({ blogsData }: { blogsData: any }) => {
 };
 
 export default EngineeringCategory;
-
-export async function getStaticProps() {
-  const pageIndex = 1;
-
-  const blogsData = await fetcher(
-    `${process.env.BLOG_URL}/blogs?populate=deep&sort=createdAt:desc&pagination[page]=${pageIndex}&pagination[pageSize]=10&filters[category][category][$containsi]=engineering`
-  );
-
-  return {
-    props: {
-      blogsData,
-    },
-  };
-}

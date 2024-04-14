@@ -9,26 +9,26 @@ const payWithCryptoData = [
     id: "01",
     title: "Obtain user consent",
     body: "Customers are given information about the process and give Tensfer informed consent to process and authenticate their credentials.",
-    image: '/iphone.png"',
+    image: "/iphone.png",
   },
   {
     id: "02",
     title: "Select wallet",
     body: "Your customers can select their preferred account from a wide coverage of self custody wallets and exchanges.",
-    image: '/wallet.png',
+    image: "/wallet.png",
   },
   {
     id: "03",
     title: "Authenticate ownership",
     body: "Your customers verify with their credentials and connect their preferred exchange or wallet to your app in seconds.",
-    image: '/apikeys.png',
+    image: "/apikeys.png",
   },
-  {
-    id: "04",
-    title: "Access transaction and balance holdings",
-    body: "After successful authentication, you will be able to unlock powerful data insights, such as transactions, balance, and user holdings.",
-    image: '/records.png',
-  },
+  // {
+  //   id: "04",
+  //   title: "Access transaction and balance holdings",
+  //   body: "After successful authentication, you will be able to unlock powerful data insights, such as transactions, balance, and user holdings.",
+  //   image: "/records.png",
+  // },
 ];
 
 export const MobileView = () => {
@@ -43,7 +43,7 @@ export const MobileView = () => {
               letterSpacing={-1}
               zIndex={2}
             >
-              {/* <TypingText title="HOW IT WORKS" /> */}
+              HOW IT WORKS
             </Text>
             <Box
               bg="#9acbf8"
@@ -103,7 +103,7 @@ export const MobileView = () => {
               <Flex
                 w="100%"
                 bg="#e9edf8"
-                bgImage='/pattern.svg'
+                bgImage="/pattern.svg"
                 bgSize="cover"
                 bgBlendMode="multiply"
                 h="200px"
@@ -113,7 +113,12 @@ export const MobileView = () => {
                 overflow="hidden"
               >
                 <Box position="absolute" w="120px" mt={4}>
-                  <Image src={item.image} width={100} height={100} alt="featured-images" />
+                  <Image
+                    src={item.image}
+                    width={800}
+                    height={800}
+                    alt="featured-images"
+                  />
                 </Box>
               </Flex>
             </Stack>

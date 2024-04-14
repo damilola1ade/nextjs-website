@@ -9,6 +9,34 @@ import { Layout } from "@/components/Layout";
 
 import { fetcher } from "@/lib/api";
 
+export async function getStaticProps() {
+  const pageIndex = 1;
+
+  const featuredBlogPromise = fetcher(
+    `${process.env.BLOG_URL}/blogs?populate=deep`
+  );
+
+  const allBlogsPromise = fetcher(
+    `${process.env.BLOG_URL}/blogs?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=1&sort=createdAt:desc`
+  );
+
+  const categoriesPromise = fetcher(`${process.env.BLOG_URL}/categories`);
+
+  const [featuredBlog, allBlogs, categories] = await Promise.all([
+    featuredBlogPromise,
+    allBlogsPromise,
+    categoriesPromise,
+  ]);
+
+  return {
+    props: {
+      featuredBlog,
+      allBlogs,
+      categories,
+    },
+  };
+}
+
 const Blog = ({
   featuredBlog,
   allBlogs,
@@ -29,11 +57,13 @@ const Blog = ({
   );
 
   const { data: allBlogsData } = useSWR(
-    `${process.env.BLOG_URL}/blogs?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=1&sort=createdAt:desc`,
+    `${process.env.BLOG_URL}/blogs?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=10&sort=createdAt:desc`,
     fetcher,
     {
       fallbackData: allBlogs,
-    }
+      dedupingInterval: 500000,
+    },
+    
   );
 
   useEffect(() => {
@@ -65,31 +95,3 @@ const Blog = ({
 };
 
 export default Blog;
-
-export async function getStaticProps() {
-  const pageIndex = 1;
-
-  const featuredBlogPromise = fetcher(
-    `${process.env.BLOG_URL}/blogs?populate=deep`
-  );
-
-  const allBlogsPromise = fetcher(
-    `${process.env.BLOG_URL}/blogs?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=1&sort=createdAt:desc`
-  );
-
-  const categoriesPromise = fetcher(`${process.env.BLOG_URL}/categories`);
-
-  const [featuredBlog, allBlogs, categories] = await Promise.all([
-    featuredBlogPromise,
-    allBlogsPromise,
-    categoriesPromise,
-  ]);
-
-  return {
-    props: {
-      featuredBlog,
-      allBlogs,
-      categories,
-    },
-  };
-}

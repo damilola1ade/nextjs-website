@@ -12,7 +12,7 @@ const ThirdImage = () => {
       ref={imageRef}
       position="absolute"
       src="/apikeys.png"
-      w={{ base: "150px", md: "250px", "2xl": "350px" }}
+      w={{ base: "150px", md: "220px", "2xl": "300px" }}
       style={{
         transform: isImageInView ? "none" : "translateY(10px)",
         opacity: isImageInView ? 1 : 0,

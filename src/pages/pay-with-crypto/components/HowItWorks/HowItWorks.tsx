@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -16,7 +16,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import { TypingText } from "@/hooks/CustomTexts"
+import { TypingText } from "@/hooks/CustomTexts";
 
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { FirstImage, LastImage, SecondImage, ThirdImage } from "./components";
@@ -95,6 +95,7 @@ const HowItWorks = () => {
     <Box
       w={{ base: "auto", lg: "100%" }}
       bg="#f4f6f8"
+      h={{ base: "110vh", xl: "100vh" }}
       p={{ base: 4, lg: 12 }}
       borderRadius="2xl"
     >
@@ -103,7 +104,7 @@ const HowItWorks = () => {
         minW={{ base: "1024px", "2xl": "1320px" }}
         mx="auto"
         flexDir={{ base: "column", lg: "row" }}
-        justifyContent={{ base: "center", lg: "normal" }}
+        justifyContent={{ base: "center", lg: "space-evenly" }}
         alignItems={{ base: "center", lg: "normal" }}
       >
         <Box>
@@ -120,7 +121,7 @@ const HowItWorks = () => {
                 letterSpacing={-1}
                 zIndex={2}
               >
-                <TypingText title="HOW IT WORKS" /> 
+                HOW IT WORKS
               </Text>
               <Box
                 bg="purple.100"
@@ -139,7 +140,7 @@ const HowItWorks = () => {
             allowToggle
             index={currentIndex}
             minW={{ base: "400px", "2xl": "500px" }}
-            maxW={{ base: "400px", "2xl": "500px" }}
+            maxW={{ base: "400px", "2xl": "560px" }}
           >
             {payWithCryptoData.map((item, index) => (
               <AccordionItem
@@ -218,14 +219,14 @@ const HowItWorks = () => {
             ))}
           </Accordion>
         </Box>
-        <Spacer />
+
         <Flex
-          w="50%"
+          w="40%"
           bg="#e9edf8"
-          bgImage='/pattern.svg'
+          bgImage="/pattern.svg"
           bgSize="cover"
           bgBlendMode="multiply"
-          h={{ base: "300px", md: "480px", "2xl": "668px" }}
+          h={{ base: "300px", md: "480px", "2xl": "600px" }}
           borderRadius="2xl"
           position="relative"
           justifyContent="center"
@@ -243,4 +244,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks
+export default HowItWorks;
