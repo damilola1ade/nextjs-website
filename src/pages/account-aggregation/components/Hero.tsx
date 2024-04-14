@@ -92,8 +92,8 @@ const Hero = () => {
             height={500}
             src='/account.webp'
             quality={100}
-            alt="pay with crypto image"
-            loading="eager"
+            alt="account aggregation image"
+            priority={true}
           />
         </Box>
     </Flex>

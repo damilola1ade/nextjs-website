@@ -1,16 +1,11 @@
 // import Tensfer from "@tensferhq/tensfer-js";
+import { Tensfer } from "@tensferhq/tensfer-js";
 import { Box, Button, Icon, Stack, Text } from "@chakra-ui/react";
 import { SiContactlesspayment } from "react-icons/si";
 
-declare global {
-  interface Window {
-    Tensfer: any;
-  }
-}
-
 const Payment = () => {
   const openWidget = () => {
-    window.Tensfer.linkWithOptions({
+    Tensfer.linkWithOptions({
       publicKey: "live_pk_6df1b0b24c1a53963fab",
       onSuccess: function (data: any) {
         console.log("Success!", data);
@@ -61,4 +56,4 @@ const Payment = () => {
   );
 };
 
-export default Payment
+export default Payment;

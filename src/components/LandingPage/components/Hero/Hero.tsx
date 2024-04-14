@@ -167,13 +167,16 @@ export const Hero = () => {
             left={12}
             zIndex={2}
           >
-            <Image
-              src='/hero_image.webp'
-              width={616}
-              height={616}
-              alt="hero image"
-              loading="eager"
-            />
+            <Box w={{ md: "xl", lg: "md", xl: "xl", "2xl": "3xl" }} h="80%">
+              <Image
+                src="/hero_image.webp"
+                width={1000}
+                height={1000}
+                quality={100}
+                alt="hero image"
+                priority={true}
+              />
+            </Box>
           </Box>
         </Flex>
       </HeroBox>

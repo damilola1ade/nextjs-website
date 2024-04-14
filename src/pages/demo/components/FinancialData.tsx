@@ -1,17 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 //* eslint-disable @typescript-eslint/no-explicit-any */
+import { Tensfer } from "@tensferhq/tensfer-js";
 import { Box, Button, Icon, Stack, Text } from "@chakra-ui/react";
 import { GiTwoCoins } from "react-icons/gi";
 
-declare global {
-  interface Window {
-    Tensfer: any;
-  }
-}
 
 const FinancialData = () => {
   const openWidget = () => {
-    window.Tensfer.linkWithOptions({
+    Tensfer.linkWithOptions({
       publicKey: "test_pk_b8882e23d7085a63c1af",
       onSuccess: function (data: unknown) {
         console.log("Success!", data);

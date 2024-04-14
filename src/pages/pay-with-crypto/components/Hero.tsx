@@ -80,7 +80,7 @@ const Hero = () => {
             src='/phone.png'
             quality={100}
             alt="pay with crypto image"
-            loading="eager"
+            priority={true}
           />
         </Box>
       </Flex>
