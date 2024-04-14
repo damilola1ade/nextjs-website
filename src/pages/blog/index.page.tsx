@@ -61,7 +61,7 @@ const Blog = ({
     fetcher,
     {
       fallbackData: allBlogs,
-      dedupingInterval: 500000,
+      // dedupingInterval: 500000,
     },
     
   );
